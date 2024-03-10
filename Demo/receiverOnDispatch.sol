@@ -12,7 +12,7 @@ import "./SampleSwap.sol";
 contract ReceiverOnDispatch is ITeleporterReceiver {
 
     ITeleporterMessenger public immutable teleporterMessenger = ITeleporterMessenger(0x253b2784c75e510dD0fF1da844684a1aC0aa5fcf);
-    TokenTransfer public swapContract = TokenTransfer(0x73007B30dE8A22F27019428f8B5D989058C9C85b);
+    TokenTransfer public swapContract = TokenTransfer(0x3083BbaF00621cA7702eaE1d0C9c29E8c91Bad24);
   
     uint public lastMessage;
 

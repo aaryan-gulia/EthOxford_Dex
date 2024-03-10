@@ -34,7 +34,7 @@ contract TokenTransfer {
     accounts[msg.sender].tokenB = initial_value;
     accounts[msg.sender].tokenA = initial_value;
     // Update account balances
-    //accounts[msg.sender].tokenA -= amount;
+    accounts[msg.sender].tokenA -= amount;
     accounts[msg.sender].tokenB += amount;
 
     // Emit transfer event
