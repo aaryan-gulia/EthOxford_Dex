@@ -11,12 +11,15 @@ contract SenderOnCChain {
 
     ITeleporterMessenger public immutable teleporterMessenger = ITeleporterMessenger(0x253b2784c75e510dD0fF1da844684a1aC0aa5fcf);
 
+    string public lastMessage;
     /**
+    unit lastMessage;
      * @dev Sends a message to another chain.
      */
+
     function sendMessage(
         address destinationAddress,
-        string calldata message
+        uint message
     ) external {
         teleporterMessenger.sendCrossChainMessage(
             TeleporterMessageInput({
@@ -31,5 +34,14 @@ contract SenderOnCChain {
                 message: abi.encode(message)
             })
         );
+    }
+    
+    function receiveFinalMessage(
+        bytes32 originChainID,
+        address originSenderAddress,
+        bytes calldata message
+    ) external {
+        require(msg.sender == address(teleporterMessenger), "ReceiverOnDispatch: unauthorized TeleporterMessenger");
+        lastMessage = abi.decode(message, (string));
     }
 }
